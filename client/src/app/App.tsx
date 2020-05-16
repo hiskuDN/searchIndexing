@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.scss';
-import {Button, TextField, Typography} from "@material-ui/core";
+import {Button, InputAdornment, TextField, Typography} from "@material-ui/core";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faSearch} from "@fortawesome/free-solid-svg-icons";
 
@@ -16,6 +16,13 @@ function App() {
             variant={'outlined'}
             color={'primary'}
             className={'search-input margin'}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <FontAwesomeIcon icon={faSearch} size={'1x'}/>
+                </InputAdornment>
+              ),
+            }}
           >
             <FontAwesomeIcon icon={faSearch}/>
             Query

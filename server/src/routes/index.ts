@@ -4,7 +4,7 @@ import UserRouter from './Users';
 // Init router and path
 const router = Router();
 
-// Add sub-routes
+// Add sub-api
 router.use('/users', UserRouter);
 
 // Export the base-router

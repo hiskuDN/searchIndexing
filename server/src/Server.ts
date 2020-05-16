@@ -24,7 +24,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
 
-// Show routes called in console during development
+// Show api called in console during development
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
 }
