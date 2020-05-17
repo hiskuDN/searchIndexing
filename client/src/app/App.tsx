@@ -1,9 +1,14 @@
 import React from 'react';
 import './App.scss';
 import {
-  Button,
-  InputAdornment, Paper,
-  Table, TableBody, TableCell,
+  FormControl,
+  InputAdornment, InputLabel,
+  MenuItem,
+  Paper,
+  Select,
+  Table,
+  TableBody,
+  TableCell,
   TableContainer,
   TableHead,
   TableRow,
@@ -12,22 +17,23 @@ import {
 } from "@material-ui/core";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faSearch} from "@fortawesome/free-solid-svg-icons";
-import {searchTitle} from "../services/searchService";
+import {search} from "../services/searchService";
 import {SearchResponseModel} from "../model/SearchResponseModel";
+import {SearchURLTypes} from "../types/SearchURLTypes";
 
 function App() {
+  const [queryType, setQueryType] = React.useState<SearchURLTypes>(SearchURLTypes.TITLE)
   const [query, setQuery] = React.useState('')
   const [table, setTable] = React.useState<SearchResponseModel[]>([])
-  //TODO enter data into the table dynamically
+
   const handleSearch = async () => {
-    let dataList: SearchResponseModel[] = await searchTitle(query)
+    let dataList: SearchResponseModel[] = await search(query, queryType)
     setTable(dataList)
   }
 
   React.useEffect(() => {
-    console.log('table should change')
-    console.log(table)
-  }, [table])
+    handleSearch()
+  }, [queryType])
 
   const getTable = () => {
     return (
@@ -76,10 +82,29 @@ function App() {
           <i>Top 20 rows</i>
         </Typography>
         <div className="input-container">
+          <FormControl className={'select-query'}>
+            <InputLabel shrink id="select-label">
+              Search Attribute
+            </InputLabel>
+            <Select
+              value={queryType}
+              variant={"outlined"}
+              labelId={'select-label'}
+              id={'select-label'}
+              defaultValue={SearchURLTypes.TITLE}
+              onChange={(event) => {
+                setQueryType(event.target.value as SearchURLTypes)
+              }}
+              displayEmpty
+            >
+              <MenuItem value={SearchURLTypes.TITLE}>Title</MenuItem>
+              <MenuItem value={SearchURLTypes.INGREDIENT}>Ingredient</MenuItem>
+            </Select>
+          </FormControl>
           <TextField
             variant={'outlined'}
             color={'primary'}
-            className={'search-input margin'}
+            className={'search-input'}
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
@@ -95,6 +120,7 @@ function App() {
             <FontAwesomeIcon icon={faSearch}/>
             Query
           </TextField>
+
           {/*<Button*/}
           {/*  size={'large'}*/}
           {/*  variant={'contained'}*/}

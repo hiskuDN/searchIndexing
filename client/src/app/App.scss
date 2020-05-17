@@ -18,10 +18,12 @@
   .search-input {
     background-color: #dedede;
     width: 100%;
+    margin: 20px !important;
   }
 
-  .margin {
-    margin: 20px !important;
+  .select-query {
+    width: 30%;
+    background-color: #dedede;
   }
 }
 
@@ -29,3 +31,4 @@
   width: 80% !important;
   margin: 20px auto;
 }
+
