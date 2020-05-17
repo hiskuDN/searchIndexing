@@ -4,7 +4,7 @@ import xlsx from 'xlsx'
 /**
  * Search title query that is passed from the frontend and return a JSON array object
  * @param {String} query
- * @return String
+ * @return []
  */
 export const searchTitle = async (query) => {
   const data = getFile()
@@ -23,7 +23,7 @@ export const searchTitle = async (query) => {
 /**
  * Search allInfo query that is passed from the frontend and return a JSON array object
  * @param {String} query
- * @return String
+ * @return []
  */
 export const searchIngredient  = async (query) => {
   const data = getFile()

@@ -16,7 +16,8 @@ const handleRequest = (request, response) => {
         })
         .catch((err) => console.log(err))
       break
-    case '/search/ingred':
+
+    case '/search/ingredient':
       console.log('searching ingredient for: ' + path.query.query)
       searchIngredient(path.query.query)
         .then((res) => {
@@ -25,6 +26,7 @@ const handleRequest = (request, response) => {
         })
         .catch((err) => console.log(err))
       break
+
     default:
       response.writeHead(404)
       response.write('Route not found')
