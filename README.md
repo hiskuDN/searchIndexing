@@ -11,6 +11,7 @@ for frontend and Pure Node for the back end.
     or `yarn install` to get the required dependencies
     * On your terminal, run `npm start` or `yarn start`
     * Client side development server will be started on `localhost:3000`
+    * !!!!!Please install a CORS bypassing plugin to avoid CORS blocing issues!!!!!
 
 * To run this app please follow the following guidelines for client side 
     * Go to `/server-node`, open terminal or command prompt and execute `npm install` 
