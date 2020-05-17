@@ -2,28 +2,40 @@ import {getFile} from './getFile'
 import xlsx from 'xlsx'
 
 /**
- * Search query that is passed from the frontend and return a JSON object
+ * Search title query that is passed from the frontend and return a JSON array object
  * @param {String} query
  * @return String
  */
-export const searchTitle = (query) => {
+export const searchTitle = async (query) => {
   const data = getFile()
-  const dataObj = xlsx.utils.sheet_to_json(data.Sheets[data.SheetNames[0]])
+  const dataObj = await xlsx.utils.sheet_to_json(data.Sheets[data.SheetNames[0]])
+  let tempList = []
 
   dataObj.map((d) => {
-    if(d.Title.includes(query))
-      return d.Title
+    if(d.Title.includes(query)) {
+      tempList.push(d)
+    }
   })
-  return 'Not found'
+
+  return tempList
 }
 
-export const searchIngredient  = (query) => {
+/**
+ * Search allInfo query that is passed from the frontend and return a JSON array object
+ * @param {String} query
+ * @return String
+ */
+export const searchIngredient  = async (query) => {
   const data = getFile()
-  const dataObj = xlsx.utils.sheet_to_json(data.Sheets[data.SheetNames[0]])
+  const dataObj = await xlsx.utils.sheet_to_json(data.Sheets[data.SheetNames[0]])
+  let tempList = []
 
   dataObj.map((d) => {
-    if(d.Title.includes(query))
-      return d.Title
+    if(d.data !== undefined && d.data.includes(query))
+    if(d.data.includes(query)) {
+      tempList.push(d)
+    }
   })
-  return 'Not found'
+
+  return tempList
 }

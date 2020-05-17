@@ -6,5 +6,5 @@ import path from 'path'
  * @return WorkBook
  * */
 export const getFile = () => {
-  return readFile(path.resolve('./src/assets/data.xlsx'))
+  return readFile(path.resolve('./src/assets/data.xlsx'));
 }
