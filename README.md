@@ -1,4 +1,4 @@
-# Whatvita: Search Your Vitamin
+# Search Your Vitamin
 
 * This project is a React/Node based Search Indexing site that uses React (with typescript)
 for frontend and Pure Node for the back end.
@@ -18,6 +18,8 @@ for frontend and Pure Node for the back end.
         or `yarn install` to get the required dependencies
     * On your terminal, run `npm start` or `yarn start`
     * Server side development server will be started on `localhost:3004`
+    
+* Add data on server side to the excel file in `/server-node/assets/data.xlsx`
     
 ## Project Structure
 * The server side project structure is as follows
